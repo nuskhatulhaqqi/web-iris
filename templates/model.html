@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>{{title}}</title>
+
+{% endblock %}
+
+{% block body %}
+<div class="container-contact100">
+    <div class="wrap-contact100">
+        <div class="contact100-form validate-form">
+            <span class="contact100-form-title">
+                MODEL
+            </span>
+        </div>
+        <div class="contact100-form validate-form">
+            <span class="contact100-form-p">
+                1. DESICION TREE
+            </span>
+        </div>
+        <div class="contact100-form validate-form">
+            <span class="contact100-form-p" id="dt" style="display: none;">
+                Akurasi dari Desicion Tree {{a_dt}} %
+            </span>
+        </div>
+        <div class="container-contact100-form-btn">
+            <div class="wrap-contact100-form-btn">
+                <div class="contact100-form-bgbtn"></div>
+                <button class="contact100-form-btn" onclick="dt()">
+                    <span>
+                        Show/Hide Akurasi Desicion Tree
+                        <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+                    </span>
+                </button>
+            </div>
+        </div>
+        <div class="contact100-form validate-form">
+            <span class="contact100-form-p">
+                2. KNN
+            </span>
+        </div>
+        <div class="contact100-form validate-form">
+            <span class="contact100-form-p" id="knn" style="display: none;">
+                Akurasi dari KNN {{a_knn}} %
+            </span>
+        </div>
+        <div class="container-contact100-form-btn">
+            <div class="wrap-contact100-form-btn">
+                <div class="contact100-form-bgbtn"></div>
+                <button class="contact100-form-btn" onclick="knn()">
+                    <span>
+                        Show/Hide Akurasi KNN
+                        <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+                    </span>
+                </button>
+            </div>
+        </div>
+        <div class="contact100-form validate-form">
+            <span class="contact100-form-p">
+                3. Naive Bayes
+            </span>
+        </div>
+        <div class="contact100-form validate-form">
+            <span class="contact100-form-p" id="nb" style="display: none;">
+                Akurasi dari Naive Bayes {{a_nb}} %
+            </span>
+        </div>
+        <div class="container-contact100-form-btn">
+            <div class="wrap-contact100-form-btn">
+                <div class="contact100-form-bgbtn"></div>
+                <button class="contact100-form-btn" onclick="nb()">
+                    <span>
+                        Show/Hide Akurasi Naive Bayes
+                        <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+                    </span>
+                </button>
+            </div>
+        </div>
+        <div class="contact100-form validate-form">
+            <span class="contact100-form-p" style="text-align: center;">
+                Grafik Perbandingan Akurasi 3 Model
+            </span>
+        </div>
+        <img src="/mod.png" alt="Grafik Perbandingan 3 Metode" width="100%" id="grafik" style="display: none;">
+        <div class="container-contact100-form-btn">
+            <div class="wrap-contact100-form-btn">
+                <div class="contact100-form-bgbtn"></div>
+                <button class="contact100-form-btn" onclick="grafik()">
+                    <span>
+                        Show/Hide Grafik Perbandingan Akurasi 3 Model
+                        <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function dt() {
+        var a_dt = document.getElementById('dt');
+        if (a_dt.style.display === 'none'){
+            a_dt.style.display = 'block';
+        }else{
+            a_dt.style.display = 'none';
+        }
+    }
+    function knn() {
+        var a_knn = document.getElementById('knn');
+        if (a_knn.style.display === 'none'){
+            a_knn.style.display = 'block';  
+        }else{
+            a_knn.style.display = 'none';
+        }
+    }
+    function nb() {
+        var a_nb = document.getElementById('nb');
+        if (a_nb.style.display === 'none'){
+            a_nb.style.display = 'block';
+        }else{
+            a_nb.style.display = 'none';
+        }
+    }
+    function grafik() {
+        var a_g = document.getElementById('grafik');
+        if (a_g.style.display === 'none'){
+            a_g.style.display = 'block';
+        }else{
+            a_g.style.display = 'none';
+        }
+    }
+</script>
+{% endblock %}

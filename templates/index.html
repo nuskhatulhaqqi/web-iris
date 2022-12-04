@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>TEBAK BUNGA IRIS</title>
+{% endblock %}
+
+{% block body %}
+<div class="container-contact100">
+    <div class="wrap-contact100">
+        <form class="contact100-form validate-form" action="/datas" method="POST">
+            <span class="contact100-form-title">
+                TEBAK BUNGA IRIS!
+            </span>
+
+            <div class="gambar">
+                <img src="static/gambar/semua.png" style="width: 100%;padding-bottom: 30px;" >
+            </div>
+
+            <div class="wrap-input100 validate-input">
+                <span class="label-input100">Pilih Model</span>
+                <select name="model" class="input100" placeholder="Pilih Model" id="model" required>
+                    <option value="1">DESICION TREE         ||| Akurasi : {{a_dt}}%</option>
+                    <option value="2">KNN                   ||| Akurasi : {{a_knn}}% </option>
+                    <option value="3">NAIVE BAYES           ||| Akurasi : {{a_nb}}%</option>
+                </select>
+                <span class="focus-input100"></span>
+            </div>
+
+            <div class="wrap-input100 validate-input">
+                <span class="label-input100">Sepal Length</span>
+                <input class="input100" type="text" placeholder="Masukan Sepal Length" name="sl" id="sl" required>
+                <span class="focus-input100"></span>
+            </div>
+
+            <div class="wrap-input100 validate-input" >
+                <span class="label-input100">Sepal Width</span>
+                <input class="input100" type="text" placeholder="Masukan Sepal Width" name="sw" id="sw" required>
+                <span class="focus-input100"></span>
+            </div>
+
+            <div class="wrap-input100 validate-input" >
+                <span class="label-input100">Petal Length</span>
+                <input class="input100" type="text" placeholder="Masukan Petal Length" name="pl" id="pl" required>
+                <span class="focus-input100"></span>
+            </div>
+
+            <div class="wrap-input100 validate-input" >
+                <span class="label-input100">Petal Width</span>
+                <input class="input100" type="text" placeholder="Masukan Petal Width" name="pw" id="pw" required>
+                <span class="focus-input100"></span>
+            </div>
+
+
+            <div class="container-contact100-form-btn">
+                <div class="wrap-contact100-form-btn">
+                    <div class="contact100-form-bgbtn"></div>
+                    <button class="contact100-form-btn">
+                        <span>
+                            Prediksi
+                            <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </form>
+        <span class="by">
+            <hr class="hr" onclick="cek()">
+            BY : NUSKHATUL HAQQI  (200411100034)
+            <p id="cek" style="display: none;">{{hasil}}</p>
+            <hr class="hr">
+        </span>
+    </div>
+</div>
+<script>
+    function cek() {
+        var cek = document.getElementById('cek');
+        if (cek.style.display === 'none'){
+            cek.style.display = 'block';
+        }else{
+            cek.style.display = 'none';
+        }
+    }
+</script>
+
+{% endblock %}

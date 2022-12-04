@@ -1,0 +1,192 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<head>
+    <meta charset="utf-8" />
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+{% endblock %}
+
+{% block body %}
+<body>
+    <div class="container-contact100">
+        <div class="container">
+                <div class="page-header" style="background: linear-gradient(45deg, #0cf1f5, #fc00ff);">
+                    <h1 style="padding: 10px;">Klasifikasi Data Iris dengan 3 Metode</h1>
+                </div>
+                
+                <!-- Blog Layout - START -->
+                <div class="row wrap">
+                    <div class="col-sm-3">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h2 style="color: white;">Sidebar</h2>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">Desicion Tree</div>
+                                    <div class="panel-body">
+                                        Decision tree adalah algoritma machine learning yang menggunakan seperangkat aturan untuk membuat keputusan dengan struktur seperti pohon
+                                        <a href="#1">Readmore</a>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">KNN</div>
+                                    <div class="panel-body">
+                                        Algoritma KNN merupakan algoritma klasifikasi yang bekerja dengan mengambil sejumlah K data terdekat (tetangganya)
+                                        <a href="#2">Readmore</a>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">Naive Bayes</div>
+                                    <div class="panel-body">
+                                        Naive Bayes adalah metode yang cocok untuk klasifikasi biner dan multiclass. Metode yang juga dikenal sebagai 
+                                        <a href="#3">Readmore</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-9" style="background-color:white;border-radius: 10px;">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h2>Klasifikasi Data Iris</h2>
+                                <center><img src="static/gambar/semua.png" style="width: 60%;padding-bottom: 30px;" ></center>
+                                <p style="text-align: justify;">
+                                    Tulisan ini akan membahas tentang pengolahan data untuk kasus klasifikasi Dataset Iris. 
+                                    Tools yang kita gunakan untuk mengolah Dataset Iris ini adalah python. 
+                                    Dataset Iris merupakan dataset multivariat yang diperkenalkan oleh ahli statistika dan biologi Inggris, Ronald Fisher, dalam paper-nya tahun 1936. 
+                                    Dataset ini terdiri dari 3 spesies iris (Iris-Setosa, Iris-virginica, dan Iris-versicolor) dan tiap spesies memiliki 50 sampel. 
+                                    Empat fitur yang diukur dari masing-masing sampel yaitu panjang dan lebar dari sepal dan kelopak, dalam sentimeter (Petal Length, Petal Width, Sepal Length, Sepal Width). 
+                                    Dataset Iris dapat didapat dari berbagai sumber, salah satunya sebagai berikut <a href="https://www.kaggle.com/datasets/arshid/iris-flower-dataset">Here</a>
+                                </p>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h2>Tentang Dataset</h2>
+                                <p style="text-align: justify;">
+                                    Pada dataset yang digunakan ada 5 kolom yaitu Sepal Length, Sepal Width, Petal Length, Petal Width, dan Species.
+                                     Kolom Species merupakan target atau kelas dalam kasus klasifikasi ini. 
+                                     Dan 4 kolom lainnya (Sepal Length, Sepal Width, Petal Length, Petal Width) disebut juga sebagai fitur. 
+                                     Fitur inilah yang akan menentukan suatu data akan diklasifikasikan ke dalam kelas yang mana.
+                                </p>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h2>Pengolahan Dataset</h2>
+                                <p>Berikut cara pengolahan Dataset Iris dengan menggunakan python:</p>
+                                <h4>Import Modul</h4>
+                                <code>import pandas as pd </code><br><code>import numpy as np</code>
+                                <h4>Load Dataset</h4>
+                                <h7>load data csv secara langsung</h7><br>
+                                <code>data = pd.read_csv('IRIS.csv')</code><br>
+                                <code>data.head()</code><br>
+                                <h7>load data csv dari link</h7><br>
+                                <code>dataset_url = 'https://raw.githubusercontent.com/nuskhatulhaqqi/data_mining/main/iris.csv'</code><br>
+                                <code>df = pd.read_csv(dataset_url)</code><br>
+                                <h7>Hasil Load dataset</h7><br><br>
+                                <center><img src="static/gambar/dataset.png" style="width: 60%;padding-bottom: 30px;" ></center><br>
+                                <h4>Membagi Data Uji dan Data Test</h4>
+                                <code>X=data.iloc[:,0:4].values</code><br>
+                                <code>y=data.iloc[:,4].values</code><br>
+                                <h7>Memanggil Modul Untuk Training Data</h7><br>
+                                <code>from sklearn.model_selection import train_test_split</code><br>
+                                <h7>Training Data</h7><br>
+                                <code>X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.3,random_state=0)</code>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h2 id="1">DESICION TREE</h2>
+                                <p style="text-align: justify;">
+                                    Decision tree adalah algoritma machine learning yang menggunakan seperangkat aturan untuk membuat keputusan dengan struktur seperti pohon yang memodelkan kemungkinan hasil, biaya sumber daya, utilitas dan kemungkinan konsekuensi atau resiko. 
+                                    Konsepnya adalah dengan cara menyajikan algoritma dengan pernyataan bersyarat, yang meliputi cabang untuk mewakili langkah-langkah pengambilan keputusan yang dapat mengarah pada hasil yang menguntungkan. 
+                                    Dimana setiap cabang mewakili hasil untuk atribut, sedangkan jalur dari daun ke akar mewakili aturan untuk klasifikasi. Itulah kenapa algoritma ini disebut decision tree karena pilihannya bercabang, membentuk struktur yang terlihat seperti pohon. 
+                                </p>
+                                <h4>Penerapan dengan Modul dari sklearn</h4>
+                                <h7>Memanggil Modul sklearn</h7><br>
+                                <code>from sklearn.tree import DecisionTreeClassifier</code><br>
+                                <code>model = DecisionTreeClassifier()</code><br>
+                                <code>model.fit(X_train,y_train)</code><br>
+                                <code>hasil_prediksi = model.predict(X_test)</code><br>
+                                <h7>Cek Akurasi</h7><br>
+                                <code>from sklearn.metrics import accuracy_score</code><br>
+                                <code>accuracy_dt=round(accuracy_score(y_test,hasil_prediksi)* 100, 2)</code><br>
+                                <h7>Setelah di jalankan hasil akurasi klasifikasi data iris dengan metode desicion tree menghasilkan akurasi sebesar 97.78%</h7><br>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h2 id="2">KNN</h2>
+                                <p style="text-align: justify;">
+                                    Algoritma KNN merupakan algoritma klasifikasi yang bekerja dengan mengambil sejumlah K data terdekat (tetangganya) sebagai acuan untuk menentukan kelas dari data baru. 
+                                    Algoritma ini mengklasifikasikan data berdasarkan similarity atau kemiripan atau kedekatannya terhadap data lainnya.
+                                </p>
+                                <h4>Penerapan dengan Modul dari sklearn</h4>
+                                <h7>Memanggil Modul sklearn</h7><br>
+                                <code>from sklearn.neighbors import KNeighborsClassifier</code><br>
+                                <code>knn_clf = KNeighborsClassifier(n_neighbors=9)</code><br>
+                                <code>knn_clf.fit(X_train,y_train)</code><br>
+                                <code>hasil_prediksi = knn_clf.predict(X_test)</code><br>
+                                <h7>Cek Akurasi</h7><br>
+                                <code>from sklearn.metrics import accuracy_score</code><br>
+                                <code>accuracy_dt=round(accuracy_score(y_test,hasil_prediksi)* 100, 2)</code><br>
+                                <h7>Setelah di jalankan hasil akurasi klasifikasi data iris dengan metode knn menghasilkan akurasi sebesar 97.78%</h7><br>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h2 id="3">NAIVE BAYES</h2>
+                                <p style="text-align: justify;">
+                                    Naive Bayes adalah metode yang cocok untuk klasifikasi biner dan multiclass. Metode yang juga dikenal sebagai Naive Bayes Classifier ini menerapkan teknik supervised klasifikasi objek di masa depan dengan menetapkan label kelas ke instance/catatan menggunakan probabilitas bersyarat. 
+                                    Probabilitas bersyarat adalah ukuran peluang suatu peristiwa yang terjadi berdasarkan peristiwa lain yang telah (dengan asumsi, praduga, pernyataan, atau terbukti) terjadi. 
+                                </p>
+                                <h4>Penerapan dengan Modul dari sklearn</h4>
+                                <h7>Memanggil Modul sklearn</h7><br>
+                                <code>from sklearn.naive_bayes import GaussianNB</code><br>
+                                <code>gaussian = GaussianNB()</code><br>
+                                <code>gaussian.fit(X_train, y_train)</code><br>
+                                <code>hasil_prediksi = gaussian.predict(X_test)</code><br>
+                                <h7>Cek Akurasi</h7><br>
+                                <code>from sklearn.metrics import accuracy_score</code><br>
+                                <code>accuracy_dt=round(accuracy_score(y_test,hasil_prediksi)* 100, 2)</code><br>
+                                <h7>Setelah di jalankan hasil akurasi klasifikasi data iris dengan metode naive bayes menghasilkan akurasi sebesar 100%</h7><br>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h2>Membuat Model dengan Pickle</h2>
+                                <h4></h4>
+                                <h7>Memanggil Modul Pickle</h7><br>
+                                <code>import pickle</code><br>
+                                <h7>Membuat Model</h7><br>
+                                <code>with open('nama_model','wb') as r:</code><br>
+                                <code>&nbsp &nbsp pickle.dump(model,r)</code><br>
+                                <h7>Memanggil Model</h7><br>
+                                <code>with open('nama_model','rb') as r:</code><br>
+                                <code>&nbsp &nbsp data_model = pickle.load(r)</code><br>
+                                <h7>Penerapan</h7><br>
+                                <code>nilai=[5.9,3.0,5.1,1.8]</code><br>
+                                <code>hasil = data_model.predict([nilai])</code><br>
+                            </div>
+                        </div>
+                        <hr />
+                        <h2>Untuk Codenya dapat dilihat <a style="font-size: 30px;" href="https://colab.research.google.com/drive/1ICmOyk0DjMMXQPcvKE654VPxYMdprc1T#scrollTo=OmKrr1TkcCPc">disini</a></h2>
+                    </div>
+                </div>
+                <!-- Blog Layout - END -->
+        </div>    
+    </div>
+</body>
+
+{% endblock %}

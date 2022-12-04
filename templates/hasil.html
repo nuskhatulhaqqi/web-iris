@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>TEBAK BUNGA IRIS</title>
+{% endblock %}
+
+{% block body %}
+<div class="container-contact100">
+    <div class="wrap-contact100">
+        <h1 style="padding: 20px; text-align:center;" >METODE {{data_model}}</h1>
+        <h4 style="padding: 10px; text-align:center;" >Akurasi : {{akurasi}}%</h4>
+        <form class="contact100-form validate-form" action="/datas" method="GET">
+            {% if finalData == 1 %}
+            <span class="contact100-form-title">
+                <img src="static/gambar/setosa.jpg" style="width:75%; padding: 20px;"><br>
+                Iris - Setosa
+            </span>
+
+            {% elif finalData == 2 %}
+            <span class="contact100-form-title">
+                <img src="static/gambar/versicolor.jpg" style="width:75% ; padding: 20px;"><br>
+                Iris - Versicolor
+            </span>
+
+            {% else %}
+            <span class="contact100-form-title">
+                <img src="static/gambar/virginica.jpg" style="width:75% ; padding: 20px;"><br>
+                Iris - Virginica
+            </span>
+
+            {% endif %}
+            <div class="container-contact100-form-btn">
+                <div class="wrap-contact100-form-btn">
+                    <div class="contact100-form-bgbtn"></div>
+                    <button class="contact100-form-btn">
+                        <span>
+                            Selesai
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </form>
+        <h3 style="padding: 20px; text-align:center;">GRAFIK PERBANDINGAN HASIL 3 METODE</h3>
+        <div class="container-contact100-form-btn">
+            <div class="wrap-contact100-form-btn">
+                <div class="contact100-form-bgbtn"></div>
+                <button class="contact100-form-btn" onclick="grafik()">
+                    <span>
+                        Show/Hide Grafik Perbandingan Hasil 3 Metode
+                    </span>
+                </button>
+            </div>
+        </div>
+        <div id="grafik" style="display: none;">
+            <img src="/plot.png" alt="Grafik Perbandingan Hasil 3 Metode" width="100%" >
+            <h7>KETERANGAN:</h7><br>
+            <p>1. DESICION TREE : {{a}}</p><br>
+            <p>2. KNN           : {{b}}</p><br>
+            <p>3. NAIVE BAYES   : {{c}}</p><br>
+        </div>
+        <span class="by">
+            <hr class="hr" onclick="cek()">
+            BY : NUSKHATUL HAQQI  (200411100034)
+            <p id="cek" style="display: none;">{{hasil}}</p>
+            <hr class="hr">
+        </span>
+    </div>
+</div>
+<script>
+    function cek() {
+        var cek = document.getElementById('cek');
+        if (cek.style.display === 'none'){
+            cek.style.display = 'block';
+        }else{
+            cek.style.display = 'none';
+        }
+    }
+    function grafik() {
+        var cek = document.getElementById('grafik');
+        if (cek.style.display === 'none'){
+            cek.style.display = 'block';
+        }else{
+            cek.style.display = 'none';
+        }
+    }
+</script>
+
+{% endblock %}
